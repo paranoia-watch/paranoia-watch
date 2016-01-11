@@ -1,0 +1,35 @@
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700' rel='stylesheet' type='text/css'>
+<style media="screen" is="custom-style">
+  :root {
+    --primary-background-color: red;
+    --primary-text-color: black;
+    --secondary-text-color: white;
+    
+    --primary-font-stack: 'Montserrat', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --alternates-font-stack: 'Montserrat Alternates', 'Montserrat', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --root-em-size: 26px;
+    
+    font-family: var(--primary-font-stack);
+    background-color: var(--primary-background-color);
+    color: var(--primary-text-color);
+    font-size: var(--root-em-size);
+    
+    text-align: center;
+    line-height: 2;
+  }
+  :root * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+  }
+  @media (max-width: 600px) {
+    :root {
+      font-size: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+<script src="https://cdn.rawgit.com/ckrack/scrollsnap-polyfill/develop/dist/scrollsnap-polyfill.bundled.js" charset="utf-8"></script>
+<dom-module id="paranoia-locations">
+  <template>
+    <style is="custom-style">
+    :host {
+      display: block;
+      overflow-x: auto;
+      /*overflow-y: hidden;*/
+      white-space: nowrap;
+      margin: auto;
+      width: 100%;
+      scroll-snap-type: mandatory;
+      scroll-snap-points-x: repeat(100%);
+      -webkit-scroll-snap-type: mandatory;
+      -webkit-scroll-snap-points-x: repeat(100%);
+      font-size: 0;
+    }
+    :host ::content paranoia-location {
+      width: 100%;
+      height: 100%;
+      font-size: initial;
+    }
+    /*@media (min-width: 600px) and (max-width: 1000px) {
+      :host ::content paranoia-location {
+        width: 50%;
+        height: 100%;
+        font-size: initial;
+      }
+    }
+    @media (min-width: 1000px) {
+      :host ::content paranoia-location {
+        width: 33.333%;
+        height: 100%;
+        font-size: initial;
+      }
+    }*/
+    /* 1337 Haxors to make the inner object wide enough to be able to snap */
+    :host ::content:last-child {
+      margin-right: 0.5px;
+    }
+    </style>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      is: 'paranoia-locations'
+    });
+  </script>
+</dom-module>
