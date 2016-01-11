@@ -1,0 +1,72 @@
+<link rel="import" href="charli-api.html">
+<link rel="import" href="paranoia-locations.html">
+<link rel="import" href="paranoia-location.html">
+<dom-module id="paranoia-app">
+  <template>
+    <style is="custom-style">
+      :host {
+        position: relative;
+        display: flex;
+        display: -webkit-flex;
+        -webkit-flex;
+        flex: 1;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        max-width: 100%;
+        max-height: 100%;
+        background: var(--primary-background-color);
+      }
+      header {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        margin: 0; padding: 0;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        z-index: 1000;
+      }
+      header h1 {
+        text-transform: uppercase;
+        color: var(--secondary-text-color);
+        font-size: 1.25rem;
+      }
+      paranoia-locations {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+      }
+    </style>
+    <charli-api
+      amsterdam="{{amsterdam}}"
+      berlin="{{berlin}}"
+      paris="{{paris}}"
+    ></charli-api>
+    <header>
+      <h1>paranoia.watch</h1>
+    </header>
+    <paranoia-locations>
+      <paranoia-location 
+        name="Amsterdam" 
+        percentage="[[amsterdam]]"
+      ></paranoia-location>
+      <paranoia-location 
+        name="Berlin" 
+        percentage="[[berlin]]"
+      ></paranoia-location>
+      <paranoia-location 
+        name="Paris" 
+        percentage="[[paris]]"
+      ></paranoia-location>
+    </paranoia-locations>
+    
+  </template>
+  <script>
+    Polymer({
+      is: 'paranoia-app'
+    })
+  </script>
+</dom-module>

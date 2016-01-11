@@ -1,0 +1,59 @@
+<dom-module id="paranoia-percentage">
+  <template>
+    <style>
+      :host {
+        display: inline-flex;
+        
+        align-items: center;
+        justify-content: center;
+      }
+      #index {
+        color: var(--primary-text-color);
+        font-style: inherit;
+        font-size: 5rem;
+        font-weight: bold;
+      }
+      #index::after {
+        content: '%';
+        font-weight: bold;
+        font-family: var(--alternates-font-stack);
+        font-size: 3rem;
+      }
+      #index[plus]::before {
+        content: '+';
+      }
+      #index::first-letter, #index[plus]::before {
+        color: rgba(0,0,0,0.3);
+        /*font-weight: 700;*/
+      }
+    </style>
+    <var id="index" plus$="[[overZero]]">[[n]]</var>
+  </template>
+  <script>
+    Polymer({
+      is: 'paranoia-percentage',
+      properties: {
+        n: {
+          type: Number,
+          value: 0,
+          notify: true
+        },
+        overZero: {
+          type: String,
+          computed: '_computeIndexOverZero(n)'
+        },
+        underZero: {
+          type: String,
+          computed: '_computeIndexUnderZero(n)'
+        }
+      },
+      _computeIndexOverZero: function (n) {
+        return (n >= 0)
+      },
+      _computeIndexUnderZero: function (n) {
+        return (n <= 0)
+      },
+    })
+
+  </script>
+</dom-module>

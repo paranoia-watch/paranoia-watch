@@ -1,0 +1,147 @@
+---
+permalink: /
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    
+    <title>paranoia.watch</title>
+    <base href="web-app/">
+    <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-lite.js" charset="utf-8"></script>
+    <link href="https://cdn.rawgit.com/Polymer/polymer/master/polymer.html" rel="import">
+    <link rel="import" href="theme.html">
+    <link rel="import" href="paranoia-app.html">
+    <link rel="import" href="paranoia-home.html">
+    <link rel="import" href="mock-phone.html">
+  </head>
+  <body>
+    <style media="screen">
+      section {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10vw;
+      }
+      section>p {
+        text-align: left;
+        max-width: 30em;
+      }
+      body>paranoia-app {
+        min-height: 100vh;
+      }
+      section#intro {
+        background: linear-gradient(to bottom, rgba(254,183,241,1) 48%, rgba(0,0,0,0));
+      }
+      section#about-app {
+        background: linear-gradient(to bottom, rgba(150,172,252,1) 48%, rgba(0,0,0,0));
+        overflow-y: hidden;
+      }
+      section#about-app>div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+      }
+      @media (max-width: 700px) {
+        section#about-app>div {
+        }
+        section#about-app mock-phone {
+          display: none;
+        }
+      }
+      section#about-app mock-phone {
+        padding-right: 2em;
+      }
+      section#about-app #about-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        line-height: 1;
+      }
+      section#about-app #about-header>h1 {
+        font-size: 3em;
+        margin: 0;
+        margin-bottom: 2.5rem;
+        text-align: left;
+      }
+      section#about-app #about-header>h2 {
+        font-weight: 400;
+        font-size: 0.85em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      section#about-app p {
+        margin: 5rem 0;
+      }
+      hr {
+        width: 5rem;
+        border: 2px solid black;
+        margin: 2rem;
+      }
+      footer {
+        /*background: rgba(0,0,0,0.3);*/
+        color: white;
+        line-height: 2;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      @media (max-width: 700px) {
+        footer{
+          flex-direction: column;
+        }
+      }
+      footer img {
+        min-width: 10rem;
+        width: 20vw;
+        padding: 0.5rem;
+        padding-left: 0.75rem;
+      }
+    </style>
+    <paranoia-home></paranoia-home>
+    <paranoia-app></paranoia-app>
+    <section id="intro">
+      <p>
+        <strong>Terrorism threatens our societies. The fear of terrorism even more. At times when the free world is wounded to the core, we are inundated with headlines, news and talk shows.</strong>
+      </p>
+      <hr>
+      <p>
+        When we are threatened, information is crucial, but an overload is extremely dangerous because of the fear it generates. After all, is this not exactly what terrorists aim for? 
+      </p>
+    </section>
+    <section id="about-app">
+      <div>
+        <mock-phone>
+          <paranoia-app></paranoia-app>
+        </mock-phone>
+        <div id="about-header">
+          <h1><span>paranoia.</span><br><span>watch<span></h1>
+          <h2>
+            Amsterdam &ndash;
+            Berlin &ndash;
+            Paris
+          </h2>
+        </div>
+      </div>
+      
+      <p>
+        Paranoia.watch monitors the fear of terrorism in capital cities, where the population density is high and the potential impact for terrorist attacks is immense. Starting with Amsterdam, Berlin and Paris, we have the ambition to become a leading global indicator. Also, commercial and political exploitation will be examined on the basis of comparative data.
+      </p>
+    </section>
+    <footer>
+      <p>
+        A product of <strong>paranoia.watch</strong> with support from 
+      </p>
+      <img src="../brand-assets/mediafonds.png" alt="" />
+    </footer>
+  </body>
+</html>

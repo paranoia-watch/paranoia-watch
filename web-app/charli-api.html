@@ -1,0 +1,49 @@
+<script src="https://cdn.rawgit.com/socketio/socket.io-client/master/socket.io.js" charset="utf-8"></script>
+<dom-module id="charli-api">
+  <script>
+    Polymer({
+      is: 'charli-api',
+      properties: {
+        amsterdam: {
+          type: Number,
+          notify: true,
+          reflectToAttribute: true,
+          value: 0,
+        },
+        berlin: {
+          type: Number,
+          notify: true,
+          reflectToAttribute: true,
+          value: 0,
+        },
+        paris: {
+          type: Number,
+          notify: true,
+          reflectToAttribute: true,
+          value: 0,
+        },
+      },
+      socket: io('http://charli.paranoia.watch/'),
+      // socket: {on: function(){return false}},
+      ready: function () {
+        var self = this
+        
+        this.socket.on('paranoia-updated', function (data) {
+          console.log(data)
+          var locations = data.paranoiaChange[0].locations
+          for (var i = 0; i < locations.length; i++) {
+            var location = locations[i]
+            var locationName = location.name.toLowerCase()
+            self.set(locationName, location.change)
+            var location = null
+            var locationName = null
+          }
+        })
+        
+        this.set('amsterdam', 0)
+        this.set('berlin', 0)
+        this.set('paris', 0)
+      }
+    })
+  </script>
+</dom-module>
