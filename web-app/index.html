@@ -6,7 +6,7 @@ permalink: /
   <head>
     <meta charset="UTF-8">
       <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    
+
     <title>paranoia.watch</title>
     <base href="web-app/">
     <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-lite.js" charset="utf-8"></script>
@@ -15,6 +15,7 @@ permalink: /
     <link rel="import" href="paranoia-app.html">
     <link rel="import" href="paranoia-home.html">
     <link rel="import" href="mock-phone.html">
+    <link rel="import" href="peilingwijzer-graph.html">
   </head>
   <body>
     <style media="screen">
@@ -68,7 +69,7 @@ permalink: /
       section#about-app #about-header>h1 {
         font-size: 3em;
         margin: 0;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2.5em;
         text-align: left;
       }
       section#about-app #about-header>h2 {
@@ -78,22 +79,22 @@ permalink: /
         margin: 0;
       }
       section#about-app p {
-        margin: 5rem 0;
+        margin: 5em 0;
       }
       hr {
-        width: 5rem;
+        width: 5em;
         border: 2px solid black;
-        margin: 2rem;
+        margin: 2em;
       }
       footer {
         /*background: rgba(0,0,0,0.3);*/
         color: white;
         line-height: 2;
-        font-size: 0.75rem;
+        font-size: 0.75em;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 2rem;
+        padding: 2em;
       }
       @media (max-width: 700px) {
         footer{
@@ -101,12 +102,13 @@ permalink: /
         }
       }
       footer img {
-        min-width: 10rem;
+        min-width: 10em;
         width: 20vw;
-        padding: 0.5rem;
-        padding-left: 0.75rem;
+        padding: 0.5em;
+        padding-left: 0.75em;
       }
     </style>
+
     <paranoia-home></paranoia-home>
     <paranoia-app></paranoia-app>
     <section id="intro">
@@ -115,13 +117,13 @@ permalink: /
       </p>
       <hr>
       <p>
-        When we are threatened, information is crucial, but an overload is extremely dangerous because of the fear it generates. After all, is this not exactly what terrorists aim for? 
+        When we are threatened, information is crucial, but an overload is extemely dangerous because of the fear it generates. After all, is this not exactly what terrorists aim for?
       </p>
     </section>
     <section id="about-app">
       <div>
         <mock-phone>
-          <paranoia-app></paranoia-app>
+          <paranoia-app small></paranoia-app>
         </mock-phone>
         <div id="about-header">
           <h1><span>paranoia.</span><br><span>watch<span></h1>
@@ -132,14 +134,14 @@ permalink: /
           </h2>
         </div>
       </div>
-      
+
       <p>
         Paranoia.watch monitors the fear of terrorism in capital cities, where the population density is high and the potential impact for terrorist attacks is immense. Starting with Amsterdam, Berlin and Paris, we have the ambition to become a leading global indicator. Also, commercial and political exploitation will be examined on the basis of comparative data.
       </p>
     </section>
     <footer>
       <p>
-        A product of <strong>paranoia.watch</strong> with support from 
+        A product of <strong>paranoia.watch</strong> with support from
       </p>
       <img src="../brand-assets/mediafonds.png" alt="" />
     </footer>

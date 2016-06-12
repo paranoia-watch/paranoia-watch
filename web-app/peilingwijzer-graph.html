@@ -1,0 +1,109 @@
+<link href="https://cdn.rawgit.com/GoogleWebComponents/google-chart/master/google-chart.html" rel="import">
+<link rel="import" href="charli-api.html">
+
+<dom-module id="peilingwijzer-graph">
+  <template>
+    <style>
+      :host {
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+      }
+      google-chart {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <charli-api peilingwijzer-data="{{data}}"></charli-api>
+
+    <!-- <google-chart
+      type='pie'
+      options='{"title": "Latest Peilingwijzer Results"}'
+      cols='[{"label":"Party", "type":"string"}, {"label":"Seats", "type":"number"}]'
+      rows='{{latestPollAsRows(data)}}'>
+    </google-chart> -->
+
+    <google-chart
+      type='line'
+      options='{"title": "Historical Peilingwijzer Results"}'
+      cols='{{pollsAsCols(data)}}'
+      rows='{{pollsAsRows(data)}}'>
+    </google-chart>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'peilingwijzer-graph',
+      properties: {
+        data: {
+          type: Array,
+          value: []
+        },
+      },
+      latestPollAsRows: function (data) {
+        // [["Jan", 31],["Feb", 28],["Mar", 31]]
+        if(!data || !data.length) {
+          return
+        }
+        var parties = []
+
+        var latestPoll = data[data.length - 1]
+        var seats = latestPoll.seats
+
+        for (var key in seats) {
+          if (seats.hasOwnProperty(key)) {
+            parties.push([key, seats[key]])
+          }
+        }
+
+        return parties
+      },
+      pollsAsCols: function (data) {
+        // [{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]
+        if(!data || !data.length) {
+          return
+        }
+        var cols = []
+        cols.push({"label": "Date", "type": "date"})
+
+        var latestPoll = data[data.length - 1]
+        var seats = latestPoll.seats
+
+        for (var seat in latestPoll.seats) {
+          if (latestPoll.seats.hasOwnProperty(seat)) {
+            cols.push({"label": seat, "type": "number"})
+          }
+        }
+
+        return cols
+      },
+      pollsAsRows: function (data) {
+        // [["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30]]
+        if(!data || !data.length) {
+          return
+        }
+
+        var polls = data.map(function (item) {
+          var poll = []
+
+          poll.push(new Date(item.date))
+
+          for (var seat in item.seats) {
+            if (item.seats.hasOwnProperty(seat)) {
+              poll.push(parseFloat(item.seats[seat]))
+            }
+          }
+
+          return poll
+        })
+
+        return polls
+      }
+    });
+  </script>
+</dom-module>
