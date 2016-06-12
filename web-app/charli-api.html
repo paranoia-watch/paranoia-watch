@@ -22,14 +22,18 @@
           reflectToAttribute: true,
           value: 0,
         },
+        peilingwijzerData: {
+          type: Array,
+          notify: true,
+          value: []
+        }
       },
       socket: io('http://charli.paranoia.watch/'),
       // socket: {on: function(){return false}},
       ready: function () {
         var self = this
-        
+
         this.socket.on('paranoia-updated', function (data) {
-          console.log(data)
           var locations = data.paranoiaChange[0].locations
           for (var i = 0; i < locations.length; i++) {
             var location = locations[i]
@@ -39,10 +43,10 @@
             var locationName = null
           }
         })
-        
-        this.set('amsterdam', 0)
-        this.set('berlin', 0)
-        this.set('paris', 0)
+
+        this.socket.on('peilingwijzer-data', function (data) {
+          self.set('peilingwijzerData', data)
+        })
       }
     })
   </script>
