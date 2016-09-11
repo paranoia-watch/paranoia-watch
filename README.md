@@ -1,2 +1,14 @@
 # paranoia-watch
-The website etc
+The Paranoia watch website
+
+##dependencies (pre-install)
+
+```
+gem install jekyll
+gem install bundler
+```
+
+#run
+```
+jekyll serve
+```
