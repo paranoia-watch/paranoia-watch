@@ -47,6 +47,10 @@
         this.socket.on('peilingwijzer-data', function (data) {
           self.set('peilingwijzerData', data)
         })
+
+        this.socket.on('historical-data', function (data) {
+          console.log('historical-data', JSON.stringify(data, null, 2))
+        })
       }
     })
   </script>
